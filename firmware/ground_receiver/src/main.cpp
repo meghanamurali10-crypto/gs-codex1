@@ -10,6 +10,7 @@
   Must use the SAME LORA_FREQUENCY and setSyncWord() as the flight board.
 */
 
+#include <Arduino.h>
 #include <SPI.h>
 #include <LoRa.h>
 

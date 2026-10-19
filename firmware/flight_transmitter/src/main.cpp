@@ -27,9 +27,9 @@
     - readCamAStatus              -> ESP32-CAM A health/liveness pin
 */
 
-#include <SPI.h>
+#include <Arduino.h>
 #include <LoRa.h>
-#include <Servo.h>
+#include <ESP32Servo.h>
 
 // ---- LoRa pins ----
 #define LORA_SCK   5
@@ -137,6 +137,10 @@ String readGNSSTime(uint32_t elapsedSeconds) {
           elapsedSeconds / 3600, (elapsedSeconds / 60) % 60, elapsedSeconds % 60);
   return String(buf);
 }
+
+void handleCommand(String cmd);
+void sendTelemetryPacket();
+void guidanceFailsafeCheck();
 
 void setup() {
   Serial.begin(115200);

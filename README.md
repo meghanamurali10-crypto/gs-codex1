@@ -107,6 +107,19 @@ The command button labeled **CALIBRATE** sends `CAL`, matching the current
 flight firmware; the visible `CXON` and `CXOFF` buttons send those literal
 commands.
 
+## Firmware builds
+
+The ground receiver and flight transmitter are separate firmware targets.
+Build either from the repository root with PlatformIO:
+
+```bash
+pio run -e ttgo-lora32-v1
+pio run -e ttgo-lora32-v1-flight
+```
+
+The receiver target is for the ground station's LoRa-to-USB bridge; the flight
+target is for the CanSat transmitter and guidance servo.
+
 ---
 
 ## Future Enhancements
@@ -153,4 +166,3 @@ The selected point-to-point LoRa library does not provide XBee `NETID` or
 `PANID` registers. Uplink commands therefore include a team-ID application
 address (`NETID,<team-id>,<command>`), which the flight firmware checks before
 acting. This does not configure a hardware NETID/PANID field.
-
